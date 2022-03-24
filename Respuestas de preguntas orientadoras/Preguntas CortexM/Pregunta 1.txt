@@ -1,0 +1,15 @@
+1. Describa brevemente las diferencias entre las familias de procesadores Cortex M0, M3 y M4.
+
+En el aspecto macro, las implementaciones M0 y M0+ son versiones reducidas, de menor consumo y menor costo (menor gate-count) pero también de menor
+performance que los procesadores M3 y M4. En otros temas más puntuales, se puede mencionar que:
+-Los procesadores M3 y M4 están basados en la arquitectura ARMv7-M mientras que los Cortex M0/M0+ están basados en ARMv6-M, que tiene un set de 
+instrucciones reducido. Cortex-M3 tiene instrucciones para procesamiento de datos mas avanzado, mientras que Cortex-M4 posee ademas instrucciones
+DSP y de para operaciones de punto flotante.
+-Los procesadores M0/M0+ tienen arquitectura de memoria Von Neumann(1 solo bus para acceder a memoria de programa y RAM). Los procesadores M3/M4 tienen,
+en cambio, arquitectura de memoria Harvard (2 buses de memoria independientes para acceder a memoria de programa y RAM).
+-Los procesadores M3 y M4 suelen tener herramientas que facilitan la implementación de un Sistema operativo. Un ejemplo de esto es el Systick timer, el
+cual no necesariamente se encuentra presente en M0/M0+. Además, el M4 tiene 2 modos de ejecución, usuario y admin, permitiendo mayor facilidad para la
+implementación de sistemas operativos.
+-Los cortex-M4 tienen la posibilidad de tener memoria cache, una memoria rápida que se ubica entre el procesador y una memoria lenta (por ej una memoria
+externa). Esta cache permite guardar info adicional a la solicitada por el procesador a la memoria, siguiendo algún algoritmo inteligente, buscando
+tener preguardado la próxima información que el procesador va a solicitar, y así poder entregarsela de forma rápida.

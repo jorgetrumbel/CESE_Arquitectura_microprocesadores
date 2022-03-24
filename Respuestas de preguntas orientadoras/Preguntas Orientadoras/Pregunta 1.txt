@@ -1,0 +1,13 @@
+1. Describa brevemente los diferentes perfiles de familias de microprocesadores/microcontroladores de ARM. Explique alguna 
+de sus diferencias características.
+
+
+Existen 3 perfiles de familias de microprocesadores ARM:
+- Cortex-A: Son los de más alta performance y mayor costo, optimizados para correr varias aplicaciones en un Sistema Operativo
+de propósito general. Son multicore, es decir que tienen capacidad de procesamiento multitarea. Estas características deterioran el
+tiempo de respuesta para tiempos muy bajos, por lo que no son utilizados en sistemas de tiempo real.
+- Cortex-R: La sigla R viene de "Real time". Son procesadores orientados a sistemas de tiempo real. Optimizados para baja latencia y
+alta capacidad de procesamiento. Se utilizan en aplicaciones donde los tiempos de procesamiento necesitan ser deterministicos (acotados).
+- Cortex-M: Están orientados a dispositivos de consumo masivo y Sistemas embebidos compactos. Se destacan por su bajo costo y faciliad de uso.
+Tienen la capacidad de ofrecer caracteristicas de comportamiento deterministico (similar a Cortex-R). También son de bajo consumo energético y
+suelen ser completamente programables en C (sacando algunas utilidades específicas).

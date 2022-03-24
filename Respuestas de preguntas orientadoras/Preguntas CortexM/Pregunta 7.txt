@@ -1,0 +1,4 @@
+7. ¿Qué se entiende por modelo de registros ortogonal? Dé un ejemplo
+
+El modelo de registros ortogonal hace referencia a que todos los registros pueden ser utilizados por todas las instrucciones/tareas. Es decir, los registros
+son todos de propósito general. Por ejemplo, para realizar una instrucción de ADD, esta se puede hacer entre cualquier par de registros del procesador.

@@ -1,0 +1,7 @@
+2. ¿Por qué se dice que el set de instrucciones Thumb permite mayor densidad de código? Explique
+
+Densidad de código se refiere a la cantidad de instrucciones requeridas por el procesador para hacer una acción determinada y, por lo tanto,
+cuánto espacio de memoria es requerido por el programa. Cuanto menor cantidad de instrucciones para una acción dada, mayor la densidad del código.
+Las instrucciones Thumb, al ser de 16 bits (al contrario de las instrucciones ARM que son de 32) requieren menos memoria. Como los procesadores
+Cortex cuentan con ambos sets de instrucciones y pueden pasar del estado de ejecucion ARM al thumb y viceversa en un mismo ciclo de clock (sin perjudicar
+la performance), en los casos donde se puedan emplear instrucciones thumb implicaría un menor gasto de memoria y, por ende, mayor densidad de código.

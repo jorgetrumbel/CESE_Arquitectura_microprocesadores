@@ -1,0 +1,5 @@
+3. ¿Qué entiende por arquitectura load-store? ¿Qué tipo de instrucciones no posee este tipo de arquitectura?
+
+La arquitectura load-store hace referencia a que las instrucciones del procesador no pueden operar directamente sobre valores en memoria, sino que estos
+primero deben ser cargados a un registro. En otras palabras, las instrucciones del procesador solo operan sobre registros. Las unicas instrucciones que
+pueden operar sobre memoria son, justamente, las de load y store (las que cargan y graban información entre memoria y registros).
