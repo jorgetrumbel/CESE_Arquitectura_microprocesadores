@@ -1,0 +1,6 @@
+12. ¿Qué entiende por “core peripherals”? ¿Qué diferencia existe entre estos y el resto de los periféricos?
+
+Core peripherals son los periféricos que vienen integrados dentro del procesador y, por lo tanto, están incluídos dentro de cualquier dispositivo que
+cuente con un procesador de arquitectura Cortex-M. Entre estos se pueden mencionar el Nested Vector Interrupt Controller (NVIC), el Systick timer, el
+MPU (memory protection unit), entre otros. La diferencia con el resto de los periféricos es que los demás dependen del fabricante y, por lo tanto, varían
+entre distintos dispositivos, independientemente de si cuentan con arquitectura Cortex-M.

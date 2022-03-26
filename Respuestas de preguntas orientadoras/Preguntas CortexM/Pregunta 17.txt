@@ -1,0 +1,8 @@
+17. ¿Qué es el systick? ¿Por qué puede afirmarse que su implementación favorece la portabilidad de los sistemas operativos embebidos?
+
+El systick es un timer configurable propio del procesador. A diferencia de timers de propósito general, que son periféricos en un microcontrolador
+y su forma de operar depende del fabricante, el funcionamiento del systick viene definido directamente por ARM. Esto permite que cualquier microcontrolador
+que emplee la arquitectura ARM (M3/M4) siempre cuente con un temporizador que puede trabajar directamente con el procesador. Los temporizadores son una
+una parte esencial de los sistemas operativos, ya que son estos los que se encargan de administrar el tiempo que el procesador trabaja en cada tarea. 
+Esta propiedad, entonces, de que el systick quede definido por la arquitectura, hace que la portabilidad de sistemas operativos embebidos sea más sencilla,
+ya que pasar a un microcontrolador de otro fabricante no afecta la configuracion del systick.  

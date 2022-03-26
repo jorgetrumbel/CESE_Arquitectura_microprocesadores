@@ -1,0 +1,9 @@
+14. ¿Qué es el CMSIS? ¿Qué función cumple? ¿Quién lo provee? ¿Qué ventajas aporta?
+
+El CMSIS es un framework de software desarrollado por ARM para los procesadores Cortex-M. El objetivo del proyecto es estandarizar las librerias 
+para interactuar con el procesador. A su vez, el CMSIS puede incluir librerias para interactuar con los periféricos externos al procesador, los
+cuales son provistos por los diferentes vendedores de microcontroladores, pero siempre buscando una estandarización en la forma de trabajar. Las
+ventajas de utilizar CMSIS son variadas, entre las que se destacan: facilidad de portabilidad entre distintos microcontroladores Cortex-M, ya sean
+diferentes arquitecturas completamente, o microcontroladores provenientes de diferentes vendedores; Facilidad de uso, ya que la estandarización 
+permite entender rápidamente el código, aunque se cambie de microcontrolador; Robustez, ya que los códigos suelen ya estar testeados; Optmización,
+ya que estas librerías suelen estar bastante optmizadas para las funciones que proveen.

@@ -1,0 +1,6 @@
+18. ¿Qué funciones cumple la unidad de protección de memoria (MPU)?
+
+La unidad de protección de memoria (MPU) es un periférico opcional en las arquitecturas Cortex-M3 y M4. Es un dispositivo programable que permite dividir
+la memoria en distintas regiones y definir privilegios de acceso a estas. Se puede emplear para proteger data escencial para el funcionamiento de un 
+sistema operativo, así como para aislar la memoria entre diferentes tareas. También puede hacer que secciones de memoria sean Read-only, para evitar la
+eliminación accidental de información.
