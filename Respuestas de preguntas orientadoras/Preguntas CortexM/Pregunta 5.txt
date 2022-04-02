@@ -1,0 +1,5 @@
+5. ¿Qué ventajas presenta el uso de los “shadowed pointers” del PSP y el MSP?
+
+Emplear los shadowed stack pointers tiene la ventaja de permitir separar la memoria del stack entre el stack empleado por el kernel de un sistema operativo
+y el stack empleado por las aplicaciones, garantizando una mayor seguridad del sistema. Es otra de las razones por las que se dice que los procesadores
+Cortex-M3/4 están pensados para ser usados con un OS.

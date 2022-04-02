@@ -1,0 +1,6 @@
+4. ¿Cómo es el mapa de memoria de la familia?
+
+La memoria en la arquitectura Cortex-M se accede a traves de un bus de 32 bits, por lo que el espacio máximo al que se puede acceder mediante esta manera
+de address es de 4GB. A su vez, la memoria suele dividirse en distintas regiones. Una region de CODE, donde se encuentra el codigo de programa, la region
+SRAM, donde se encuentra la data, la region de periféricos, donde se encuentra la data específica de los periféricos del controlador y la región de 
+control interna del procesador. A todas estas secciones se accede desde el mismo bus, usando un mismo address. 

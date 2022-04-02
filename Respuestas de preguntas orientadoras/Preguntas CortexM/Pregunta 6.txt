@@ -1,0 +1,11 @@
+6. Describa los diferentes modos de privilegio y operación del Cortex M, sus relaciones y como se conmuta de uno al otro. 
+Describa un ejemplo en el que se pasa del modo privilegiado a no priviligiado y nuevamente a privilegiado.
+
+Existen dos modos de operacion en los dispositivos Cortex-M3/4. Estos son privilegiado y no privilegiado. Se suele implementar en caso de que se tenga
+un sistema operativo embebido, haciendo que se puedan correr aplicaciones sin acceso a secciones de memoria criticas, o acceso a registros de sistema 
+(como manejo de interrupciones o perifericos). Esto permite evitar que una aplicacion pueda corromper secciones de memoria y, en caso de que la aplicacion
+crashee, las otras aplicaciones que esten corriendo, así como el kernel de SO pueden seguir operativos. Para conmutar del estado privilegiado al no
+privilegiado, se debe escribir un registro especial llamado CONTROL. Sin embargo, para volver a un estado privilegiado, no se puede realizar la misma accion
+ya que el acceso al registro queda bloqueado. La unica manera de volver es mediante una excepcion que se encargue de hacer la modificacion. Muchas veces,
+un sistema operativo realiza, durante un cambio de contexto, el cambio en el modo de operacion entre privilegiado y no privilegiado. De esta manera permite
+a algunas aplicaciones a correr en un modo y a otras en el otro.

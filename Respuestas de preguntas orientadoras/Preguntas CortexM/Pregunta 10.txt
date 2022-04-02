@@ -1,0 +1,9 @@
+10. Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno?
+
+La pila o stack es una porcion de memoria ubicada en la RAM que actua de forma de buffer LIFO (Last in First out). El stack pointer apunta a la ultima
+porcion del stack y se actualiza con instrucciones de push y pop. Entre las funciones del stack, se encuentra: Almacenaje de data temporal de funciones,
+pasaje de data a funciones, guardado de variables locales y guardado del estado del procesador en el caso de excepciones. La pila tiene una estructura 
+Full-descending, es decir, arranca en la direccion mas alta de la memoria RAM y desciende desde ahi con cada instruccion de push. En el caso de un llamado
+a una funcion, se realiza una instruccion push, con la que se guarda la informacion de registros y el estado del contexto actual del programa. Una vez que
+termina la ejecucion de la funcion, se realiza una instruccion pop, con la que se vuelve a la ejecucion de la funcion principal y se obtienen los parametros
+de ese contexto.

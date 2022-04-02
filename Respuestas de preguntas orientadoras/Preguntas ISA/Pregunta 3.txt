@@ -1,0 +1,7 @@
+3. ¿Qué utilidad tiene la implementación de instrucciones de aritmética saturada? Dé un ejemplo con operaciones con datos de 8 bits.
+
+Las instrucciones de aritmetica saturada permiten evitar que, en una operacion aritmetica, el resultado pueda tener overflow o underflow. En caso de
+que esto ocurra, se obtiene el valor maximo como output (overflow) o minimo (underflow) y se setea un bit en un registro de control.
+Un ejemplo sería el caso en que se haga una suma de dos uint8_t donde el valor de ambos sea de 200. Como el valor maximo representable por un uint8_t
+es 255, al intentar sumar 200 + 200 en una operacion aritmetica normal, habria overflow y el resultado seria incorrecto. Sin embargo, usando aritmetica
+saturada, el resultado devolveria 255 (que es incorrecto), pero tambien se levantaria el flag correspondiente de aritmetica saturada, indicando esto. 
