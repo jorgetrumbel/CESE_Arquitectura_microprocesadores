@@ -1,0 +1,14 @@
+
+*.log
+
+*.zip
+
+*.o
+
+*.xml
+
+*.prefs
+
+*.cfg
+
+*.elf
