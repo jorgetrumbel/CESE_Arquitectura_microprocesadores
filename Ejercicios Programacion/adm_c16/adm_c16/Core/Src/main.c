@@ -74,6 +74,8 @@ static void MX_USB_OTG_FS_PCD_Init(void);
 void zeros(uint32_t * vector, uint32_t longitud);
 
 void productoEscalar32(uint32_t* vectorIn, uint32_t * vectorOut, uint32_t longitud, uint32_t escalar);
+
+void productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
 /* USER CODE END 0 */
 
 /**
@@ -86,6 +88,9 @@ int main(void)
 	uint32_t longitud_vector = LONGITUD_VECTOR;
 	uint32_t mi_vector[LONGITUD_VECTOR] = {1,2,3};
 	uint32_t mi_vector_2[LONGITUD_VECTOR] = {0,1,2,3,4,5,6,7,8,9};
+
+	uint16_t mi_vector_16[LONGITUD_VECTOR] = {1,2,3};
+	uint16_t mi_vector_2_16[LONGITUD_VECTOR] = {0,1,2,3,4,5,6,7,8,9};
 
 	/* USER CODE END 1 */
 
@@ -115,6 +120,8 @@ int main(void)
 	zeros(mi_vector, longitud_vector);
 
 	productoEscalar32(mi_vector_2, mi_vector, longitud_vector, 2);
+
+	productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -132,13 +139,19 @@ int main(void)
 /* PRIVATE USER FUNCTIONS*/
 
 void zeros(uint32_t * vector, uint32_t longitud){
-	for(uint8_t i = 0; i < longitud; i++){
+	for(uint32_t i = 0; i < longitud; i++){
 		*(vector + i) = 0;
 	}
 }
 
 void productoEscalar32(uint32_t * vectorIn, uint32_t * vectorOut, uint32_t longitud, uint32_t escalar){
-	for(uint8_t i = 0; i < longitud; i++){
+	for(uint32_t i = 0; i < longitud; i++){
+		*(vectorOut + i) = *(vectorIn + i) * escalar;
+	}
+}
+
+void productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar){
+	for(uint32_t i = 0; i < longitud; i++){
 		*(vectorOut + i) = *(vectorIn + i) * escalar;
 	}
 }
