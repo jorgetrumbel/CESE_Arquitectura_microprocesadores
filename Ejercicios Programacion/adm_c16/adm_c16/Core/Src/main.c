@@ -76,6 +76,9 @@ void zeros(uint32_t * vector, uint32_t longitud);
 void productoEscalar32(uint32_t* vectorIn, uint32_t * vectorOut, uint32_t longitud, uint32_t escalar);
 
 void productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
+
+
+void productoEscalar12 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
 /* USER CODE END 0 */
 
 /**
@@ -122,6 +125,8 @@ int main(void)
 	productoEscalar32(mi_vector_2, mi_vector, longitud_vector, 2);
 
 	productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
+
+	productoEscalar12(mi_vector_2_16, mi_vector_16, longitud_vector, 1000);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -153,6 +158,15 @@ void productoEscalar32(uint32_t * vectorIn, uint32_t * vectorOut, uint32_t longi
 void productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar){
 	for(uint32_t i = 0; i < longitud; i++){
 		*(vectorOut + i) = *(vectorIn + i) * escalar;
+	}
+}
+
+void productoEscalar12(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar){
+	for(uint8_t i = 0; i < longitud; i++){
+		*(vectorOut + i) = *(vectorIn + i) * escalar;
+		if(*(vectorOut + i) > 0x0FFF){
+			*(vectorOut + i) = 0x0FFF;
+		}
 	}
 }
 /* END OF PRIVATE USER FUNCTIONS*/
