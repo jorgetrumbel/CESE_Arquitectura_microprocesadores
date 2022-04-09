@@ -28,3 +28,11 @@
 *.list
 
 *.d
+
+*.xmi
+
+*.pdom
+
+*.resources
+
+*.map
