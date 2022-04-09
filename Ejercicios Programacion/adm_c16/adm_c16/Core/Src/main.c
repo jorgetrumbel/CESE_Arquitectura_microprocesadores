@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "string.h"
+#include "asm_func.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -127,6 +128,8 @@ int main(void)
 	productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
 
 	productoEscalar12(mi_vector_2_16, mi_vector_16, longitud_vector, 1000);
+
+	asm_zeros(mi_vector, longitud_vector);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */

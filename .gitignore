@@ -12,3 +12,19 @@
 *.cfg
 
 *.elf
+
+*.su
+
+*.ini
+
+*.snap
+
+*.history
+
+*.index
+
+*.tree
+
+*.list
+
+*.d
