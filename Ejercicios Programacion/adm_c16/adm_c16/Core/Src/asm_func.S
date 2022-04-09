@@ -87,7 +87,7 @@
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @ Prototipo en "C":
-@   void void asm_productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);(uint32_t* vectorIn, uint32_t * vectorOut, uint32_t longitud, uint32_t escalar);
+@   void void asm_productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
 @
 @ Parametros recibidos:
 @   r0: Puntero a vector de entrada
@@ -99,10 +99,39 @@
     asm_productoEscalar16:
         _asm_productoEscalar16_loop:
         	ldr r4, [r0], 2 //r4 = *vectorIn++
+        	and r4, r4, 0x00ff
         	mul r4, r4, r3 //r4 = r4 * escalar
         	str r4, [r1], 2 //*vectorOut++ = r4
         	subs r2, 1 //longitud--
         	bne _asm_productoEscalar16_loop //if (longitud != 0) jump to _asm_productoEscalar16_loop
         bx lr
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Prototipo en "C":
+@   void asm_productoEscalar12 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
+
+@
+@ Parametros recibidos:
+@   r0: Puntero a vector de entrada
+@   r1: Puntero a vector de salida
+@   r2: longitud de vector
+@   r3: escalar
+
+.thumb_func
+    asm_productoEscalar12:
+    	mov r5, 0xfff
+        _asm_productoEscalar12_loop:
+        	ldr r4, [r0], 2 //r4 = *vectorIn++
+        	and r4, r4, 0x00ff
+        	mul r4, r4, r3 //r4 = r4 * escalar
+        	cmp r4, r5
+        	bcc _asm_productoEscalar12_noOverflow
+        	mov r4, r5
+        	_asm_productoEscalar12_noOverflow:
+        	str r4, [r1], 2 //*vectorOut++ = r4
+        	subs r2, 1 //longitud--
+        	bne _asm_productoEscalar12_loop //if (longitud != 0) jump to _asm_productoEscalar12_loop
+        bx lr
+
 
 

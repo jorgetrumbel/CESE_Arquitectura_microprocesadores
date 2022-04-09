@@ -134,6 +134,8 @@ int main(void)
 	asm_productoEscalar32(mi_vector_2, mi_vector, longitud_vector, 2);
 
 	asm_productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
+
+	asm_productoEscalar12(mi_vector_2_16, mi_vector_16, longitud_vector, 1000);
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
