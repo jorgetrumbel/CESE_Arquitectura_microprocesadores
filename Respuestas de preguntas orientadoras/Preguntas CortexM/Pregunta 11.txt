@@ -1,0 +1,10 @@
+11. Describa la secuencia de reset del microprocesador.
+
+Existen 3 tipos de reset: De encendido, de sistema y de procesador. Normalmente, los reset de sistema y procesador suelen ser empleados por un componente
+de debug para poder mantener la conexion, pero tambien se usan para reiniciar al sistema.
+Despues de que ocurre el reset y antes de que el procesador ejecute codigo, este busca la primera direccion de memoria, en donde se encuentra la tabla
+de vectores de excepciones y las primeras 2 palabras de este son el valor inicial del MSP (Main stack Pointer) y el vector de reset, que contiene al
+handler de reset. Al leer esto, el procesador establece el MSP y el PC (Program Counter) con los valores leidos. De esta manera, comienza la ejecucion
+del procesador con las instrucciones del reset handler (Esta ejecucion ocurre en modo Thread, a diferencia de otras excepciones que corren en modo hanlder).
+Normalmente, durante el handler de reset se establecen las secciones de memoria, entre ellas el stack (apuntando a la seccion mas alta de RAM) y se suele
+terminar apuntando la ejecucion al programa principal (main).

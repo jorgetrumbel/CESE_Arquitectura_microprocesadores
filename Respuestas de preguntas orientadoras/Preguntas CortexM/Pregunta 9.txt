@@ -1,0 +1,10 @@
+9. Describa brevemente las excepciones más prioritarias (reset, NMI, Hardfault).
+
+Las excepciones de reset, NMI y hardfault son las 3 excepciones mas prioritarias de la arquitectura. Las 3 excepciones siempre estan habilitadas y no son
+programables ni su habilitacion ni su prioridad.
+La excepcion de reset es la que realiza el procesador cuando se inicia y es la mas prioritaria de todas. Tiene como caracteristica que se ejecuta en modo
+Thread (en lugar de modo handler como todas las otras interrupciones). Cuando se reinicia el procesador, la tabla de vectores de interrupcion comienza en
+el address 0 de la memoria, que es donde comienza la ejecucion del procesador y es donde se encuentra el handler del reset.
+La siguiente excepcion de mayor prioridad es la NMI (Non Maskable Interrupt) y es, por lo tanto, la de mayor prioridad durante la ejecucion normal del
+procesador. La NMI es una solicitud de interrupcion externa que le indica al procesador que debe atender algo de alta prioridad.
+La excepcion HardFault es la que ocurre cuando ocurre cualquier otra excepcion que se encuentre deshabilitada o enmascarada.

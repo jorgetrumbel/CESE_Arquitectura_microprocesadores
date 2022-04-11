@@ -1,0 +1,11 @@
+8. ¿Qué ventajas presenta el uso de intrucciones de ejecución condicional (IT)? Dé un ejemplo
+
+Las instrucciones de ejecucion condicional tienen como caracteristica principal que solo se ejecutan en caso de que la condicion especificada se cumpla
+pero, al contrario de un branch, no requieren saltar a otra parte del programa para ejecutarse. Esto implica que no es necesario limpiar el pipeline de 
+ejecucion del procesador, lo cual seria necesario en caso de un salto y, por lo tanto, es mas eficiente (no se pierden los ciclos de clock para vaciado y
+vuelta a llenar del pipeline)
+
+Ej:
+cmp R0, R1	Compara R0 y R1
+it   eq		La proxima instruccion se ejecuta si se cumple la condicion de igualdad
+addeq R0, R1	Suma R0 con R1 si son iguales
