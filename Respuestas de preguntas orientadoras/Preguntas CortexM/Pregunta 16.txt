@@ -1,0 +1,8 @@
+16. Explique las características avanzadas de atención a interrupciones: tail chaining y late arrival.
+
+Tail Chaining es un proceso que ocurre cuando el procesador pasa de ejecutar una interrupcion de mayor prioridad, a una interrupcion de menor prioridad
+que indico su solicitud de interrupcion durante la ejecucion de la interrupcion de mayor prioridad. Esta optimizacion permite hacer que el pasaje a 
+ejecucion (cambio de contexto) a la interrupcion de menor prioridad sea mas rapida que una atencion a excepcion normal. Para esto, el procesador saltea 
+las instrucciones de sacar y poner la informacion de los registros en el stack que normalmente haria para pasar a la ejecucion normal del programa.
+Late arrival ocurre cuando, durante el proceso de cambio de contexto de ejecucion desde el programa a un handler de excepcion, ocurre otra excepcion de
+mayor nivel de prioridad, el procesador continua con el proceso de stacking para cambiar de contexto y atiende primero a la excepcion de mayor prioridad.

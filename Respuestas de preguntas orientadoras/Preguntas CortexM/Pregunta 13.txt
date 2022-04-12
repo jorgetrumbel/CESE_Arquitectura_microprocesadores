@@ -1,0 +1,11 @@
+13. ¿Cómo se implementan las prioridades de las interrupciones? Dé un ejemplo
+
+En la arquitectura Cortex, existen algunas excepciones con nivel de prioridad maximo, el cual es fijo (Reset, NMI y HardFault), pero tambien existen
+excepciones a las cuales se les puede configurar su nivel de prioridad. El nivel de prioridad se representa en un numero entre 0 y 255 (segun el fabricante,
+los niveles de prioridad pueden ser menor cantidad), el cual se pone en el registro de configuracion correspondiente. El funcionamiento de las prioridades
+es el siguiente: En caso de que se este ejecutando una rutina de interrupcion y ocurra otra excepcion durante la ejecucion, se compara el nivel de prioridad.
+Si el nivel de prioridad es mayor (representado por un numero de mas bajo valor) entonces se hace un cambio de contexto y se pasa a atender la nueva
+interrupcion de mayor prioridad, una vez finalizado su handler, se vuelve a la ejecucion de la otra interrupcion. Un ejemplo podria ser el caso de que
+se este ejecutando una interrupcion de un periferico de timer y, en ese instante, ocurre una interrupcion de NMI. Como la interrupcion de NMI es de mayor
+prioridad, se realiza el cambio de contexto y se pasa a ejecutar el handler de NMI. Una vez finalizado dicho handler, se vuelve a la ejecucion de la
+interrupcion del timer.
