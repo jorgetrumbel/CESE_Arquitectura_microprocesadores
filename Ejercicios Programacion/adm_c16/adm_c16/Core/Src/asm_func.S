@@ -98,8 +98,7 @@
 .thumb_func
     asm_productoEscalar16:
         _asm_productoEscalar16_loop:
-        	ldr r4, [r0], 2 //r4 = *vectorIn++
-        	and r4, r4, 0x00ff
+        	ldrh r4, [r0], 2 //r4 = *vectorIn++
         	mul r4, r4, r3 //r4 = r4 * escalar
         	str r4, [r1], 2 //*vectorOut++ = r4
         	subs r2, 1 //longitud--
@@ -119,18 +118,19 @@
 
 .thumb_func
     asm_productoEscalar12:
+    	push {r5}
     	mov r5, 0xfff
         _asm_productoEscalar12_loop:
-        	ldr r4, [r0], 2 //r4 = *vectorIn++
-        	and r4, r4, 0x00ff
+        	ldrh r4, [r0], 2 //r4 = *vectorIn++
         	mul r4, r4, r3 //r4 = r4 * escalar
         	cmp r4, r5
         	bcc _asm_productoEscalar12_noOverflow
         	mov r4, r5
         	_asm_productoEscalar12_noOverflow:
-        	str r4, [r1], 2 //*vectorOut++ = r4
+        	strh r4, [r1], 2 //*vectorOut++ = r4
         	subs r2, 1 //longitud--
         	bne _asm_productoEscalar12_loop //if (longitud != 0) jump to _asm_productoEscalar12_loop
+        pop {r5}
         bx lr
 
 
