@@ -1,0 +1,11 @@
+15. Cuando ocurre una interrupción, asumiendo que está habilitada ¿Cómo opera el microprocesador para atender a la subrutina correspondiente? Explique con un ejemplo
+
+Cuando ocurre una interrupcion que esta habilitada, el microprocesador hace la siguiente secuencia de pasos:
+-Recibe la solicitud de interrupcion
+-Suspende la tarea en ejecucion actual
+-Ejecuta la rutina de servicio de interrupcion (ISR)
+-Resume la tarea que se suspendio
+
+Un ejemplo seria una interrupcion por timer (podria ser el systick). Cada cierto tiempo, el timer lanza una solicitud de interrupcion que debe ser atendida
+por el microcontrolador. Este recibe el dato y busca en el vector de interrupciones el handler correspondiente a la solicitud y lo ejecuta, suspendiendo
+la tarea que estaba realizando. Una vez terminada la rutina de interrupcion, vuelve a la ejecucion de la tarea suspendida.

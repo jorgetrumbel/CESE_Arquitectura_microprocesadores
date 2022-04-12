@@ -1,0 +1,8 @@
+2. ¿Para qué se utiliza el sufijo ‘s’? Dé un ejemplo
+
+El sufijo s se utiliza en las instrucciones de procesamiento de datos para indicar que, ademas de realizarse la operacion, se actualicen las variables de
+estado del procesador. Estas permiten ver, por ejemplo, si el resultado de la operacion fue cero, negativo, si hubo overflow, entre otras.
+Un ejemplo seria:
+subs R0, R1, R2
+Esta operacion haria la resta entre R1 y R2 y la guardaria en R0 y ademas actualiza las variable de estado. Entonces, por ejemplo que R1 y R2 sean iguales,
+la resta daria 0 y se encenderia el flag Z, indicando que ambos numeros son iguales

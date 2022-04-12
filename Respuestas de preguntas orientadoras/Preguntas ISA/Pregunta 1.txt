@@ -1,0 +1,8 @@
+1. ¿Qué son los sufijos y para qué se los utiliza? Dé un ejemplo
+
+Los sufijos son acciones adicionales que se le pueden agregar a una instruccion en ASM para indicarle cierto comportamiento al procesador. Suelen ser letras
+que se agregan luego del nombre normal de la instruccion. Pueden emplearse en instrucciones de procesamiento de datos y para indicar algun tipo de ejecucion
+condicional.
+Un ejemplo seria el caso de la instruccion beq, que seria un Branch de ejecucion (o salto) en caso de que se cumpla la condicion de que este levantado el 
+flag EQ. El sufijo empleado es EQ, indicando la condicion a cumplirse. Sin este sufijo, la instruccion b simplemente saltaria sin buscar cumplir ninguna
+condicion.
