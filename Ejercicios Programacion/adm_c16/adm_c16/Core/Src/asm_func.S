@@ -118,7 +118,7 @@
 
 .thumb_func
     asm_productoEscalar12:
-    	push {r5}
+    	push {r4, r5}
     	mov r5, 0xfff
         _asm_productoEscalar12_loop:
         	ldrh r4, [r0], 2 //r4 = *vectorIn++
@@ -130,7 +130,7 @@
         	strh r4, [r1], 2 //*vectorOut++ = r4
         	subs r2, 1 //longitud--
         	bne _asm_productoEscalar12_loop //if (longitud != 0) jump to _asm_productoEscalar12_loop
-        pop {r5}
+        pop {r4, r5}
         bx lr
 
 
