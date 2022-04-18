@@ -117,6 +117,8 @@ int main(void)
 
 	int32_t mi_vector_signado_2_32[LONGITUD_VECTOR] = {0,-1,25,3,-4,5,6,15,8,9};
 	int32_t mi_vector_signado_3_32[LONGITUD_VECTOR] = {};
+
+	volatile int32_t max_val = 0;
 	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
@@ -152,7 +154,7 @@ int main(void)
 	//productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
 
 	//productoEscalar12(mi_vector_2_16, mi_vector_16, longitud_vector, 1000);
-
+	/*
 	filtroVentana10(mi_vector_2_16_largo,  mi_vector_16_largo, LONGITUD_VECTOR_LARGO);
 
 	pack32to16(mi_vector_signado_32, mi_vector_signado_16, longitud_vector);
@@ -161,8 +163,9 @@ int main(void)
 
 	downsampleM(mi_vector_signado_2_32, mi_vector_signado_3_32, longitud_vector, 2);
 
-	invertir(mi_vector_2_16, longitud_vector);
+	invertir(mi_vector_2_16, longitud_vector);*/
 
+	/*
 	asm_zeros(mi_vector, longitud_vector);
 
 	asm_productoEscalar32(mi_vector_2, mi_vector, longitud_vector, 2);
@@ -170,6 +173,17 @@ int main(void)
 	asm_productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
 
 	asm_productoEscalar12(mi_vector_2_16, mi_vector_16, longitud_vector, 1000);
+
+	asm_filtroVentana10(mi_vector_2_16_largo,  mi_vector_16_largo, LONGITUD_VECTOR_LARGO);
+
+	asm_pack32to16(mi_vector_signado_32, mi_vector_signado_16, longitud_vector);
+
+	max_val = asm_max(mi_vector_signado_2_32, longitud_vector);
+
+	asm_downsampleM(mi_vector_signado_2_32, mi_vector_signado_3_32, longitud_vector, 2);
+	*/
+	asm_invertir(mi_vector_2_16, longitud_vector);
+
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
