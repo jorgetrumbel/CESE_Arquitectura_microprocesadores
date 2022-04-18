@@ -36,6 +36,8 @@
 
 #define LONGITUD_VECTOR 10
 
+#define LONGITUD_VECTOR_LARGO 20
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -80,6 +82,16 @@ void productoEscalar16 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t long
 
 
 void productoEscalar12 (uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitud, uint16_t escalar);
+
+void filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitudVectorIn);
+
+void pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud);
+
+int32_t max(int32_t * vectorIn, uint32_t longitud);
+
+void downsampleM(int32_t * vectorIn, int32_t * vectorOut, uint32_t longitud, uint32_t N);
+
+void invertir(uint16_t * vector, uint32_t longitud);
 /* USER CODE END 0 */
 
 /**
@@ -96,6 +108,15 @@ int main(void)
 	uint16_t mi_vector_16[LONGITUD_VECTOR] = {1,2,3};
 	uint16_t mi_vector_2_16[LONGITUD_VECTOR] = {0,1,2,3,4,5,6,7,8,9};
 
+
+	uint16_t mi_vector_16_largo[LONGITUD_VECTOR_LARGO] = {1,2,3};
+	uint16_t mi_vector_2_16_largo[LONGITUD_VECTOR_LARGO] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
+
+	int32_t mi_vector_signado_32[LONGITUD_VECTOR] = {-1<<16,1<<17,-1<<18,1<<19,-1<<20,1<<21,-1<<22,1<<23,-1<<24,1<<25};
+	int16_t mi_vector_signado_16[LONGITUD_VECTOR] = {};
+
+	int32_t mi_vector_signado_2_32[LONGITUD_VECTOR] = {0,-1,25,3,-4,5,6,15,8,9};
+	int32_t mi_vector_signado_3_32[LONGITUD_VECTOR] = {};
 	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
@@ -121,6 +142,9 @@ int main(void)
 	MX_USB_OTG_FS_PCD_Init();
 	/* USER CODE BEGIN 2 */
 
+	DWT->CTRL |= 1 << DWT_CTRL_CYCCNTENA_Pos; //Inicializo el contador de ciclos de clock
+	DWT->CYCCNT = 0; //Variable donde se guardan la cantidad de ciclos de clock -> se resetea a 0
+
 	zeros(mi_vector, longitud_vector);
 
 	//productoEscalar32(mi_vector_2, mi_vector, longitud_vector, 2);
@@ -128,6 +152,16 @@ int main(void)
 	//productoEscalar16(mi_vector_2_16, mi_vector_16, longitud_vector, 2);
 
 	//productoEscalar12(mi_vector_2_16, mi_vector_16, longitud_vector, 1000);
+
+	filtroVentana10(mi_vector_2_16_largo,  mi_vector_16_largo, LONGITUD_VECTOR_LARGO);
+
+	pack32to16(mi_vector_signado_32, mi_vector_signado_16, longitud_vector);
+
+	max(mi_vector_signado_2_32, longitud_vector);
+
+	downsampleM(mi_vector_signado_2_32, mi_vector_signado_3_32, longitud_vector, 2);
+
+	invertir(mi_vector_2_16, longitud_vector);
 
 	asm_zeros(mi_vector, longitud_vector);
 
@@ -176,6 +210,63 @@ void productoEscalar12(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longi
 		if(*(vectorOut + i) > 0x0FFF){
 			*(vectorOut + i) = 0x0FFF;
 		}
+	}
+}
+
+void filtroVentana10(uint16_t * vectorIn, uint16_t * vectorOut, uint32_t longitudVectorIn){
+	uint32_t sum = 0;
+	uint32_t avg_num = 10;
+	for(uint32_t i = 0; i < longitudVectorIn; i++){
+		for(uint32_t j = i; j < i + avg_num; j++){
+			if(j < longitudVectorIn){
+				sum += *(vectorIn + j);
+			}
+			else{
+				sum += *(vectorIn + j - longitudVectorIn);
+			}
+		}
+		*vectorOut++ = (uint16_t)(sum / avg_num);
+		sum = 0;
+	}
+}
+
+void pack32to16(int32_t * vectorIn, int16_t *vectorOut, uint32_t longitud){
+	for(uint32_t i = 0; i < longitud; i++){
+		*vectorOut++ = (int16_t)(*vectorIn++ >> 16);;
+	}
+}
+
+int32_t max(int32_t * vectorIn, uint32_t longitud){
+	int32_t current_max = *vectorIn;
+	for(uint32_t i = 0; i < longitud; i++){
+		if(current_max < *vectorIn++){
+			current_max = *(vectorIn - 1);
+		}
+	}
+	return current_max;
+}
+
+void downsampleM(int32_t * vectorIn, int32_t * vectorOut, uint32_t longitud, uint32_t N){
+	uint32_t counter = 0;
+	for(uint32_t i = 0; i < longitud; i++){
+		if(counter++ >= N){
+			counter = 0;
+			vectorIn++;
+		}
+		else{
+			*vectorOut++ = *vectorIn++;
+		}
+	}
+}
+
+void invertir(uint16_t * vector, uint32_t longitud){
+	uint16_t aux1 = 0;
+	uint16_t aux2 = 0;
+	for(uint32_t i = 0; i < longitud; i++){
+		aux1 = *vector;
+		aux2 = *(vector + longitud - 1 - i);
+		*vector = aux2;
+		*(vector++ + longitud-- - 1 - i) = aux1;
 	}
 }
 /* END OF PRIVATE USER FUNCTIONS*/
