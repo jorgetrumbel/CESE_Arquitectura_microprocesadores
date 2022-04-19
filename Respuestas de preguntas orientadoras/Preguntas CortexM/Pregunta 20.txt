@@ -1,0 +1,11 @@
+20. ¿Para qué se suele utilizar la excepción PendSV? ¿Cómo se relaciona su uso con el resto de las excepciones? Dé un ejemplo
+
+La excepcion PendSV es una de las excepciones de los procesadores Cortex-M. Su prioridad es programable y suele usarse para indicar que hay un servicio
+pendiente de ejecucion, principalmente para interaccion con sistemas operativos. Muchas veces se emplea para que estos realicen cambios de contexto. Tiene,
+como otras excepciones, un handler asosciado el cual corre cuando es llamada. Tambien se caracteriza por ser una excepcion que se activa por software. 
+Esta excepcion suele usarse para indicar que es necesario realizar un cambio de contexto, pero permitiendo que se terminen de ejecutar cualquier otra
+expcecion que pueda necesitarlo. Para esto, PendSV suele programarse con la prioridad mas baja de las excepciones.
+
+Un ejemplo seria en caso de que una excepcion de timer indique que necesita correr cierta tarea, para lo cual el SO deberia realizar un cambio de contexto.
+Para hacer esto sin que haya problemas, se levanta el flag para que corra la excepcion PendSV. Cuando todas las excepciones terminen de correr, correria el
+handler de PendSV, con el cual es haria el cambio de contexto a la tarea indicada.

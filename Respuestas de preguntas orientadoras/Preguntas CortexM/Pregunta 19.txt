@@ -1,0 +1,5 @@
+19. ¿Cuántas regiones pueden configurarse como máximo? ¿Qué ocurre en caso de haber solapamientos de las regiones? ¿Qué ocurre con las zonas de memoria no cubiertas por las regiones definidas?
+
+Las regiones del espacio de memoria estan definidos por la arquitectura. La maxima cantidad de regiones es 7 (sistema, PPB, Dispositivos externos, RAM
+externa, Perifericos, SRAM y CODE). La arquitectura permite flexibilidad a la hora de permitir que las regiones se empleen para otros usos. 
+Las zonas de memoria no cubiertas no se usan (no existe nada fisicamente que reciba algo a ese address).

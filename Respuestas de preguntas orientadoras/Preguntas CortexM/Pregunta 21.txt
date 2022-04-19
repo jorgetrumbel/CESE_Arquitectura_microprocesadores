@@ -1,0 +1,7 @@
+21. ¿Para qué se suele utilizar la excepción SVC? Expliquelo dentro de un marco de un sistema operativo embebido.
+
+La excepcion SVC (Supervisor Call) es una de las excepciones de los procesadores Cortex-M, con prioridad programable. Se caracteriza por ser una excepcion
+que puede dispararse por software (corriendo la instruccion SVC de ASM). Se puede usar, por ejemplo, para hacer que una tarea de acceso no privilegiado
+pueda llamar a una porcion de codigo con acceso privilegiado. Esto permite al programador mayor facilidad de programar aplicaciones, ya que no tiene que 
+tener en cuenta temas de HW, de los cuales se encargaria un sistema operativo. La instruccion SVC que se usa para llamarla permite tambien enviar parametros
+al handler de la excepcion y recibir una respuesta de este.

@@ -1,0 +1,6 @@
+5. ¿Qué es una instrucción SIMD? ¿En qué se aplican y que ventajas reporta su uso? Dé un ejemplo.
+
+Una instruccion SIMD (Single instruction Multiple data) es un tipo de instruccion especial que permite realizar varias operaciones en paralelo. Se emplean
+principalmente en tareas que requieran realizar calculos similares y en simultaneo, como por ejemplo en el procesado de audio o en el procesado de 
+valores RGB de pixeles. La ventaja de estas instrucciones viene justamente de su procesamiento paralelo, permitiendo que el resultado sea simultaneo
+para tareas similares a las usadas de ejemplo, donde el resultado satisfactorio depende de obtener varios valores similares en simultaneo. 

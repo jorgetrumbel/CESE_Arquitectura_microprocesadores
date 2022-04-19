@@ -1,0 +1,9 @@
+4. Describa brevemente la interfaz entre assembler y C ¿Cómo se reciben los argumentos de las funciones? ¿Cómo se devuelve el resultado? ¿Qué registros deben guardarse en la pila antes de ser modificados?
+
+La interfaz entre ASM y C esta definida por un estandar llamado AAPCS (ARM Architecture Procedure Call Standard). Esta interfaz permite escribir funciones
+en ASM y llamarlas como si fueran de C, con un prototipo identico a una funcion de este lenguaje. Para esto, se establece que se pueden enviar hasta 4 
+argumentos, que son copiados a los primeros 4 registros (R0 a R3) cuando se hace el llamado desde C, o los que sean necesarios. Con esto, la funcion corre
+en codigo ASM y, si la funcion devuelve algo, ASM devuelve lo que este en el Registro 0. En caso de que se vayan a usar mas que los primeros 4 registros
+dentro del codigo de ASM, el usuario debe gestionar guardar su contenido en la pila al comenzar la funcion y recuperarlo al terminarlo (a diferencia de 
+los otros registros que son administrados directamente por la interfaz). En caso de no hacer esto, puede traer problemas en la ejecucion del programa al
+salir de la funcion ya que estos registros pueden ser usados por el procesador.
